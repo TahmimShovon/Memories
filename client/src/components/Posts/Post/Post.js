@@ -37,7 +37,7 @@ const Post = ({ post, setCurrentId }) => {
          style={{ color: 'white' }}
          size="small" 
          onClick={() => setCurrentId(post._id)}>
-          <MoreHorizIcon fontSize="default" />
+          <MoreHorizIcon fontSize="medium" />
         </Button>
       </div>
       <div className={classes.details}>
@@ -55,12 +55,12 @@ const Post = ({ post, setCurrentId }) => {
       </CardContent>
       <CardActions className={classes.cardActions}>
         <Button size='small' color='primary' onClick={() => dispatch(likePost(post._id))}>
-            <ThumbUpAltIcon fontSize="small" />
+            <ThumbUpAltIcon fontSize="medium" />
             &nbsp; Like &nbsp;
             {post.likeCount}
         </Button>
         <Button size='small' color='primary' onClick={() => dispatch(deletePost(post._id))}>
-            <DeleteIcon fontSize="small" />
+            <DeleteIcon fontSize="medium" />
             Delete
         </Button>
       </CardActions>
