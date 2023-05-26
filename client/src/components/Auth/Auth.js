@@ -10,11 +10,16 @@ import { GoogleLogin, googleLogout } from '@react-oauth/google';
 // import { createOrGetUser } from '../../api'
 import jwt from 'jwt-decode';
 
+import { signin, signup } from '../../actions/auth';
+
+const initialState= { firstName: '', lastName: '', email: '', password: '', confirmPassword: ''};
+
 const Auth = () => {
 
     const classes = useStyles();
     const [showPassword, setShowPassword] = useState(false)
     const [isSignup, setIsSignup] = useState(false)
+    const [formData, setFormData] = useState(initialState);
 
     const dispatch = useDispatch();
     const history = useHistory();
@@ -30,8 +35,17 @@ const Auth = () => {
 
   
 
-    const handleSubmit = () => {}
-    const handleChange = () => {}
+    const handleSubmit = (e) => {
+      e.preventDefault();
+      if(isSignup){
+        dispatch(signup(formData, history))
+      }else{
+        dispatch(signin(formData, history))
+      }
+    }
+    const handleChange = (e) => {
+      setFormData({ ...formData, [e.target.name]: e.target.value });
+    }
 
 
     const googleSuccess = async (res) => {
@@ -41,7 +55,6 @@ const Auth = () => {
       const name =  decoded.name;
       const picture = decoded.picture;
       const sub= decoded.sub;
-      console.log(token);
 
       try {
         dispatch({ type: 'AUTH', data: {name, token, picture, sub} })
