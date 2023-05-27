@@ -1,23 +1,13 @@
 import axios from 'axios';
-import jwt from 'jwt-decode';
 
-const url = 'http://localhost:5000/posts';
+const API = axios.create({ baseURL: 'http://localhost:5000'})
 
-export const fetchPosts = () => axios.get(url);
-export const createPost = (newPost) => axios.post(url, newPost);
-export const updatePost = (id, updatedPost) => axios.patch(`${url}/${id}`, updatedPost);
-export const deletePost = (id) => axios.delete(`${url}/${id}`);
-export const likePost = (id) => axios.patch(`${url}/${id}/likePost`);
 
-export const createOrGetUser = async (response) =>{
-    const decoded = jwt(response.credential);
-    const {name, picture, sub} = decoded;
-    
-    const user = {
-        _id: sub,
-        _type: 'user',
-        userName: name,
-        imageUrl: picture
-    }
-    await axios.post(`http://localhost:3000/api/auth`, user);
-};
+export const fetchPosts = () => API.get('/posts');
+export const createPost = (newPost) => axios.post('/posts', newPost);
+export const updatePost = (id, updatedPost) => axios.patch(`/posts/${id}`, updatedPost);
+export const deletePost = (id) => axios.delete(`/posts/${id}`);
+export const likePost = (id) => axios.patch(`/posts/${id}/likePost`);
+
+export const signin = (formData) => API.post('/user/signin', formData);
+export const signup = (formData) => API.post('/user/signup', formData);

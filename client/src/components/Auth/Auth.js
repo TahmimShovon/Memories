@@ -24,11 +24,6 @@ const Auth = () => {
     const dispatch = useDispatch();
     const history = useHistory();
 
-  //   const createOrGetUser = async (response) =>{
-  //     const decoded = jwt(response.credential);
-  //     console.log(decoded);
-  // };
-
     const handleShowPassword = () =>{
       setShowPassword((prevShowPassword) => !prevShowPassword);
     }
@@ -49,7 +44,6 @@ const Auth = () => {
 
 
     const googleSuccess = async (res) => {
-      // createOrGetUser(res);
       const decoded = jwt(res.credential);
       const token = decoded.aud;
       const name =  decoded.name;
@@ -66,6 +60,7 @@ const Auth = () => {
 
     const switchMode = () => {
       setIsSignup((prevIsSignup) => !prevIsSignup)
+      setShowPassword(false);
     }
 
   return (
