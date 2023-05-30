@@ -8,7 +8,7 @@ import { useHistory } from 'react-router-dom'
 
 import { GoogleLogin, googleLogout } from '@react-oauth/google';
 // import { createOrGetUser } from '../../api'
-import jwt from 'jwt-decode';
+import jwt_decode from 'jwt-decode';
 
 import { signin, signup } from '../../actions/auth';
 
@@ -44,14 +44,16 @@ const Auth = () => {
 
 
     const googleSuccess = async (res) => {
-      const decoded = jwt(res.credential);
-      const token = decoded.aud;
-      const name =  decoded.name;
-      const picture = decoded.picture;
-      const sub= decoded.sub;
+      const decoded = jwt_decode(res.credential);
+      const token = decoded.jti;
+      const sub = decoded.sub;
+
+      const result = {
+        ...decoded
+      }
 
       try {
-        dispatch({ type: 'AUTH', data: {name, token, picture, sub} })
+        dispatch({ type: 'AUTH', data: {result, token} })
         history.push('/');
       } catch (error) {
         console.log(error);
