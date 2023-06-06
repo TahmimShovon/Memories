@@ -24,13 +24,12 @@ const Form = ({ currentId, setCurrentId }) =>{
     const handleSubmit = (event) =>{
         event.preventDefault();
 
-        if(currentId === 0){
-            dispatch(createPost({ ...postData, name: user?.result?.name }));
-            clear();
+        if(currentId){
+            dispatch(updatePost(currentId, postData));
         }else{
-            dispatch(updatePost(currentId, { ...postData, name: user?.result?.name}));
-            clear();
+            dispatch(createPost(postData));
         }
+        clear();
 
     }
 

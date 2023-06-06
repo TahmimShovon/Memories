@@ -44,13 +44,9 @@ const Auth = () => {
 
 
     const googleSuccess = async (res) => {
-      const decoded = jwt_decode(res.credential);
-      const token = decoded.jti;
-      const sub = decoded.sub;
-
-      const result = {
-        ...decoded
-      }
+      const result = jwt_decode(res.credential);
+      const token = res.credential;
+    
 
       try {
         dispatch({ type: 'AUTH', data: {result, token} })
