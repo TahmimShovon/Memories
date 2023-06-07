@@ -1,7 +1,8 @@
 import React, {useState, useEffect} from "react";
 import { Link, useHistory, useLocation } from 'react-router-dom'
 import { AppBar, Button, Avatar, Toolbar, Typography } from "@material-ui/core";
-import connectify from "../../images/connectify.png";
+import memoriesLogo from "../../images/memories-Logo.png";
+import memoriesText from "../../images/memories-Text.png";
 import { useDispatch } from "react-redux";
 import decode from 'jwt-decode';
 
@@ -31,15 +32,15 @@ const Navbar = () => {
 
   return (
     <AppBar className={classes.appBar} position="static" color="inherit" >
-    <div className={classes.brandContainer}>
-      <Typography component={Link} to='/' className={classes.heading} variant="h2" align="center">Connectify</Typography>
-      <img className={classes.image} src={connectify} alt="icon" height="60"/>
-    </div>
+    <Link to='/' className={classes.brandContainer}>
+      <img src={memoriesText} alt='icon' height='45px' />
+      <img className={classes.image} src={memoriesLogo} alt="icon" height="40px"/>
+    </Link>
     <Toolbar className={classes.toolbar}>
       {user? (
           <div className={classes.profile}>
-            <Avatar className={classes.purple} alt={user.name ? user.name : user.result.name} src={user.picture ? user.picture: user.result.picture}>{user.name ? user.name.charAt(0) : user.result.name.charAt(0)}</Avatar>
-            <Typography className={classes.userName} variant = 'h6'>{user.name? user.name : user.result.name}</Typography>
+            <Avatar className={classes.purple} alt={user.result.name} src={ user.result.picture}>{user.result.name.charAt(0)}</Avatar>
+            <Typography className={classes.userName} variant = 'h6'>{user.result.name}</Typography>
             <Button className={classes.logout} variant='contained' color='secondary' onClick={logout}>Logout</Button>
           </div>
       ) : (
