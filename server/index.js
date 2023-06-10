@@ -19,6 +19,10 @@ app.use(cors());
 app.use('/posts', postRoutes);
 app.use('/users', userRoutes);
 
+app.get('/', (req, res) => {
+    res.send('APP IS RUNNING.');
+})
+
 const CONNECTION_URL = process.env.MONGO_CONNECTION
 const PORT = process.env.PORT || 5000;
 mongoose.connect(CONNECTION_URL)

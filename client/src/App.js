@@ -11,15 +11,17 @@ import PostDetails from './components/PostDetails/PostDetails';
 const App = () =>{
 
     const user = JSON.parse(localStorage.getItem('profile'));
+    const clientId = process.env.REACT_APP_CLIENT_ID;
+
    
     return (
         <BrowserRouter>
-        <GoogleOAuthProvider clientId="851823776196-077ig52a7986ldf20hdjctb7k98rto10.apps.googleusercontent.com" >
+        <GoogleOAuthProvider clientId={clientId} >
 
         <Container maxWidth = 'xl'>
             <Navbar />
             <Switch>
-            <Route path ="/" exact component={() => <Redirect to="/posts" />} />
+            <Route path ="/" exact component={() => <Redirect to='/posts' />} />
             <Route path="/posts" exact component={Home} />
             <Route path="/posts/search" exact component={Home} />
             <Route path="/posts/:id" component={PostDetails} />

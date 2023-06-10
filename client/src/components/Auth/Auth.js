@@ -6,8 +6,7 @@ import useStyles from './styles'
 import { useDispatch } from 'react-redux';
 import { useHistory } from 'react-router-dom'
 
-import { GoogleLogin, googleLogout } from '@react-oauth/google';
-// import { createOrGetUser } from '../../api'
+import { GoogleLogin } from '@react-oauth/google';
 import jwt_decode from 'jwt-decode';
 
 import { signin, signup } from '../../actions/auth';
