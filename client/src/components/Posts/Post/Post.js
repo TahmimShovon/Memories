@@ -27,7 +27,7 @@ const Post = ({ post, setCurrentId }) => {
   const user = JSON.parse(localStorage.getItem("profile"));
   const [likes, setLikes] = useState(post?.likes);
 
-  const userId = user?.result?.googleId || user?.result?._id;
+  const userId = user?.result?.sub || user?.result?._id;
   const hasLikedPost = likes.find((like) => like === userId);
 
   const handleLike = async () => {
@@ -84,7 +84,7 @@ const Post = ({ post, setCurrentId }) => {
             {moment(post.createdAt).fromNow()}
           </Typography>
         </div>
-        {(user?.result?.googleId === post?.creator ||
+        {(user?.result?.sub === post?.creator ||
           user?.result?._id === post?.creator) && (
           <div className={classes.overlay2} name="edit">
             <Button
@@ -109,7 +109,7 @@ const Post = ({ post, setCurrentId }) => {
         </Typography>
         <CardContent>
           <Typography variant="body2" color="textSecondary" component="p">
-            {post.message}
+          {post.message.length > 200 ? post.message.slice(0, 150) + "... See more" : post.message}
           </Typography>
         </CardContent>
       </ButtonBase>
@@ -122,7 +122,7 @@ const Post = ({ post, setCurrentId }) => {
         >
           <Likes />
         </Button>
-        {(user?.result?.googleId === post?.creator ||
+        {(user?.result?.sub === post?.creator ||
           user?.result?._id === post?.creator) && (
           <Button
             size="small"
