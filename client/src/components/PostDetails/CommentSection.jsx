@@ -8,7 +8,7 @@ import { commentPost } from '../../actions/posts';
 const CommentSection = ( {post} ) => {
     const user = JSON.parse(localStorage.getItem('profile'));
     const classes = useStyles();
-    const [comments, setComments] = useState([post?.comments]);
+    const [comments, setComments] = useState(post?.comments || []);
     const [comment, setComment] = useState('');
     const dispatch = useDispatch();
 
