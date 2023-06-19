@@ -90,7 +90,7 @@ const PostDetails = () => {
           </Typography>
           <Divider />
           <div className={classes.recommendedPosts}>
-            {recommendedPosts.map(
+            {recommendedPosts.slice(0,4).map(
               ({ title, message, name, likes, selectedFile, _id }) => (
                 <div style={{margin: '20px', cursor: 'pointer' }} onClick={() => openPost(_id)} key={_id} >
                 <Typography gutterBottom variant="h6" ><strong>{title}</strong></Typography>

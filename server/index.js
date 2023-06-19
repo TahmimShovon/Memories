@@ -29,7 +29,3 @@ mongoose.connect(CONNECTION_URL)
 .then(() => app.listen(PORT, () => console.log("Server is running on port "+ PORT)));
 
 
-// app.use((req, res, next) => {
-//     console.log(`Incoming ${req.method} request to ${req.url}`);
-//     next();
-//   });
