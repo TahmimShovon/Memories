@@ -93,11 +93,13 @@ const PostDetails = () => {
             {recommendedPosts.slice(0,4).map(
               ({ title, message, name, likes, selectedFile, _id }) => (
                 <div style={{margin: '20px', cursor: 'pointer' }} onClick={() => openPost(_id)} key={_id} >
+                <img src={selectedFile} width='200px' height='200px' style={{ borderRadius: '10px' }}/>
                 <Typography gutterBottom variant="h6" ><strong>{title}</strong></Typography>
-                <Typography gutterBottom variant="subtitle2" >{name}</Typography>
-                <Typography gutterBottom variant="subtitle2" >{message}</Typography>
+                <Typography gutterBottom variant="subtitle2" color="textSecondary" >{name}</Typography>
+                <Typography gutterBottom variant="subtitle2" >
+                {message.length > 100 ? message.slice(0,75) + "... See more" : message}
+                </Typography>
                 <Typography gutterBottom variant="subtitle1" >Likes: {likes.length} </Typography>
-                <img src={selectedFile} width='200px' height='200px'/>
                 </div>
               )
             )}
