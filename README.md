@@ -2,7 +2,7 @@
 
 A modern and interactive social media app that connects people worldwide.
 
-![App Demo](https://example.com/demo.gif)
+![App Demo](https://memories-by-ts.netlify.app)
 
 ## Table of Contents
 - [Installation](#installation)
@@ -71,5 +71,5 @@ Contributions are welcome! To contribute to Awesome Social Media App, follow the
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
 ## Acknowledgments
-- Special thanks to the developers and contributors of the libraries and frameworks used in this project.
-- Thanks to our friends and families for their support and encouragement.
+- International Programmers Community
+- YouTube
